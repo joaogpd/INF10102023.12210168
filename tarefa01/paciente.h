@@ -13,8 +13,6 @@ struct paciente {
     struct paciente* next;
 };
 
-struct paciente* cria_lista(void);
 struct paciente* cria_paciente(enum Priority r, int o);
-
 
 #endif

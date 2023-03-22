@@ -3,6 +3,11 @@
 #include "operacoes.h"
 #include "paciente.h"
 
+// Retorna NULL para criar uma lista de struct paciente*
+struct paciente* cria_lista(void) {
+    return NULL;
+}
+
 // Insere um paciente que chegou na lista em ordem de prioridade e de chegada
 // Recebe um enum e um int como parametros, retornando um struct paciente*
 struct paciente* chegada(struct paciente* l, enum Priority r, int o) {

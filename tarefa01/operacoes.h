@@ -5,6 +5,7 @@
 struct paciente;
 enum Priority;
 
+struct paciente* cria_lista(void);
 struct paciente* chegada(struct paciente* l, enum Priority r, int o);
 void imprime(struct paciente* l);
 struct paciente* atende(struct paciente* l);
