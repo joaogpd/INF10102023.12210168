@@ -45,5 +45,4 @@ void main_interface(void) {
 		continue;
         }
     } while (opcao != 2);
-    libera_lista(lista);
 }
