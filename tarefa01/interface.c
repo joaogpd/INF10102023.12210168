@@ -38,6 +38,7 @@ void main_interface(void) {
                 break;
 	    case 2:
 		printf("Finalizando...\n");
+    		libera_lista(lista);
 		return;
 	    default:
 		printf("Insira uma opcao valida!\n");
