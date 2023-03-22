@@ -1,5 +1,5 @@
 main: operacoes.o interface.o paciente.o main.o
-	gcc -o main *.o
+	gcc -o main operacoes.o interface.o paciente.o main.o
 	rm operacoes.o interface.o paciente.o main.o
 
 operacoes.o: operacoes.c
