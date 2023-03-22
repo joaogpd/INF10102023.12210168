@@ -3,7 +3,7 @@
 #include "paciente.h"
 #include "interface.h"
 
-// Funcai para fornecer uma interface que permite ao usuario inserir pacientes, 
+// Funcao para fornecer uma interface que permite ao usuario inserir pacientes, 
 // atende-los, removendo-os, além de finalizar, em cujo caso a lista e liberada
 // e o programa volta para a main()
 void main_interface(void) {
