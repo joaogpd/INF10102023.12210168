@@ -3,6 +3,23 @@
 #include "operacoes.h"
 #include "paciente.h"
 
+struct paciente* desiste_ou_atende(struct paciente* l, int input, int desiste) {
+    struct paciente* h = NULL;
+    struct paciente* p = l;
+    
+    while (p != NULL && (des ? p->order : p->priority)) {
+        h = p;
+        p = p->next;
+    }
+    	
+    if (p == NULL)
+	return l;
+    h->next = p->next;
+    free(p);
+    return l;
+}
+
+
 // Retorna NULL para criar uma lista de struct paciente*
 struct paciente* cria_lista(void) {
     return NULL;
