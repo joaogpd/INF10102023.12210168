@@ -7,7 +7,8 @@
  * um struct paciente*, a lista que vai ser manipulada,
  * um int input, o valor a ser retirado, 
  * o int desiste (flag para indicar se e uma desistencia ou uma transferencia),
- * o int* priority, utilizado para obter o valor da prioriade do no retirado.
+ * o int* priority, utilizado para obter o valor da prioriade do no retirado
+ * Retorna a lista atualizada, um struct paciente*
  */
 struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste, int* priority) {
     struct paciente* h = NULL;
@@ -33,13 +34,19 @@ struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste
 }
 
 
-// Retorna NULL para criar uma lista de struct paciente*
+/* Funcao de criacao de lista encadadeada. Nao recebe parametros
+ * Retorna NULL
+ */
 struct paciente* cria_lista(void) {
     return NULL;
 }
 
-// Insere um paciente que chegou na lista em ordem de prioridade e de chegada
-// Recebe um enum e um int como parametros, retornando um struct paciente*
+/* Funcao de insercao em lista encadaeada mantendo ordenacao. Recebe como parametros
+ * um struct paciente*, a lista a ser manipulada,
+ * um enum Priority r, que indica o nivel de prioridade do paciente a ser inserido,
+ * um int o, que indica a ordem de chegada do paciente a ser inserido
+ * Retorna a lista atualizada, um struct paciente*
+ */
 struct paciente* chegada(struct paciente* l, enum Priority r, int o) {
     struct paciente* novo = cria_paciente(r, o);
     if (novo == NULL) {
@@ -67,8 +74,10 @@ struct paciente* chegada(struct paciente* l, enum Priority r, int o) {
     return l;    
 }    
 
-// Imprime todos os nos da lista encadeada de pacientes, tem tipo de retorno void
-// e recebe um struct paciente*
+/* Funcao de impressao de lista encadeada. Recebe como parametro
+ * um struct paciente* l, a lista  ser imprimida
+ * Tem tipo de retorno void
+ */
 void imprime(struct paciente* l) {
     struct paciente* p = l;
     while (p != NULL) {
@@ -90,9 +99,10 @@ void imprime(struct paciente* l) {
     }
 }
 
-// Permite que um usuario seja atenendido, sendo retirado do inicio
-// da lista (em ordem de prioridade). Recebe e retorna um struct paciente*,
-// uma copia atualizada da lista
+/* Funcao de retirada de no de lista encadeada, mas remove sempre o primeiro. Recebe como parametro
+ * um struct paciente* l, a lista a ser manipulada
+ * Retorna a lista atualizada, um struct paciente*
+ */
 struct paciente* atende(struct paciente* l) {
     if (l == NULL) {
 	printf("Lista vazia.\n");
@@ -106,8 +116,10 @@ struct paciente* atende(struct paciente* l) {
     return l;
 }
 
-// Libera a memoria alocada dos nos da lista. Tipo de retorno void, recebe
-// uma lista encadeada de struct paciente*
+/* Funcao de liberacao de memoria alocada de lista encadeada. Recebe como parametro
+ * um struct paciente* l, a lista a ser liberada
+ * Tem tipo de retorno void
+ */ 
 void libera_lista(struct paciente* l) {
     struct paciente* p = l;
     while (p != NULL)
