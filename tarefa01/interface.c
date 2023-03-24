@@ -42,14 +42,14 @@ void main_interface(void) {
 		    printf("Insira o nivel de prioridade (VERMELHO: 0, AMARELO: 1, VERDE: 2): ");
 		    scanf("%d", &priority);
 		} while (priority < 0 || priority > 2);
-		lista = desiste_ou_atende(lista, priority, 0, priority_ptr);
+		lista = desiste_ou_transfere(lista, priority, 0, priority_ptr);
 	        if (counters[priority_temp] != 0)
 	            counters[priority_temp] -= 1;
 		break;
 	    case 3:
 	        printf("Insira a ordem de chegada do paciente: ");
 	        scanf("%d", &ordem);
-	        lista = desiste_ou_atende(lista, ordem, 1, priority_ptr);
+	        lista = desiste_ou_transfere(lista, ordem, 1, priority_ptr);
 	        if (counters[priority_temp] != 0)
 	            counters[priority_temp] -= 1;
 		break;

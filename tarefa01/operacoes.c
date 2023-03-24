@@ -3,7 +3,13 @@
 #include "operacoes.h"
 #include "paciente.h"
 
-struct paciente* desiste_ou_atende(struct paciente* l, int input, int desiste, int* priority) {
+/* Funcao de remocao de no de lista encadadeada. Recebe como parametros:
+ * um struct paciente*, a lista que vai ser manipulada,
+ * um int input, o valor a ser retirado, 
+ * o int desiste (flag para indicar se e uma desistencia ou uma transferencia),
+ * o int* priority, utilizado para obter o valor da prioriade do no retirado.
+ */
+struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste, int* priority) {
     struct paciente* h = NULL;
     struct paciente* p = l;
     
