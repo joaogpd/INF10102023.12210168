@@ -8,7 +8,7 @@ enum Priority {
     VERDE
 };
 
-// tipo estruturado paciente, pertinente ao contexto
+// tipo estruturado paciente
 struct paciente {
     enum Priority priority;
     int order;

@@ -7,6 +7,8 @@ struct paciente;
 // tipo enum Priority
 enum Priority;
 
+// retira um paciente da lista que desistiu (pelo numero de chegada) ou que foi transferido
+// (pela ordem de prioridade)
 struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste, int* priority);
 // retorna NULL para criar uma lista encadeada
 struct paciente* cria_lista(void);

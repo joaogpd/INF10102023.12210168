@@ -3,9 +3,9 @@
 #include "paciente.h"
 #include "interface.h"
 
-// Funcao para fornecer uma interface que permite ao usuario inserir pacientes, 
-// atende-los, removendo-os, além de finalizar, em cujo caso a lista e liberada
-// e o programa volta para a main()
+/* Funcao de criacao de uma interface para o programa. Nao recebe parametros
+ * Tem tipo de retorno void
+ */
 void main_interface(void) {
     struct paciente* lista = cria_lista();
 
