@@ -3,18 +3,25 @@
 #include "operacoes.h"
 #include "paciente.h"
 
-struct paciente* desiste_ou_atende(struct paciente* l, int input, int desiste) {
+struct paciente* desiste_ou_atende(struct paciente* l, int input, int desiste, int* priority) {
     struct paciente* h = NULL;
     struct paciente* p = l;
     
-    while (p != NULL && (des ? p->order : p->priority)) {
+    while (p != NULL && (desiste ? (p->order != input) : (p->priority != input))) {
         h = p;
         p = p->next;
     }
     	
     if (p == NULL)
 	return l;
+    
+    if (h == NULL) {
+        l = p->next;
+	free(p);
+	return l;
+    }
     h->next = p->next;
+    *priority = p->priority;
     free(p);
     return l;
 }

@@ -11,20 +11,21 @@ void main_interface(void) {
 
     // variavel para segurar a opcao de prosseguimento da interface, contador
     // de ordem de chegada, e array de contador de cada prioridade
-    int opcao = -1;
-    int i = 1;
+    int priority_temp;
+    int* priority_ptr = &priority_temp;
+    int opcao = -1, i = 1, ordem = 0;
     int counters[3];
 
     do {
         printf("Numero de pacientes, vermelha: %d; amarela: %d; verde: %d\n", counters[0], counters[1], counters[2]);
         int priority = 0;
-	printf("Insira sua opcao (0: inserir paciente, 1: atender paciente, 2: encerrar execucao): ");
+	printf("Insira sua opcao (0: inserir paciente, 1: atender paciente, 2: paciente transferido, 3: paciente desistiu, 4: imprimir lista, 5: finalizar): ");
         scanf("%d", &opcao);
         switch(opcao) {
             case 0:
 		do {
                     printf("Insira o nivel de prioridade (VERMELHO: 0, AMARELO: 1, VERDE: 2): "); 
-		    scanf(" %d", &priority); 
+		    scanf("%d", &priority); 
 		} while (priority < 0 || priority > 2);
 
 		counters[priority] += 1;
@@ -37,6 +38,25 @@ void main_interface(void) {
 		lista = atende(lista);
                 break;
 	    case 2:
+		do {
+		    printf("Insira o nivel de prioridade (VERMELHO: 0, AMARELO: 1, VERDE: 2): ");
+		    scanf("%d", &priority);
+		} while (priority < 0 || priority > 2);
+		lista = desiste_ou_atende(lista, priority, 0, priority_ptr);
+	        if (counters[priority_temp] != 0)
+	            counters[priority_temp] -= 1;
+		break;
+	    case 3:
+	        printf("Insira a ordem de chegada do paciente: ");
+	        scanf("%d", &ordem);
+	        lista = desiste_ou_atende(lista, ordem, 1, priority_ptr);
+	        if (counters[priority_temp] != 0)
+	            counters[priority_temp] -= 1;
+		break;
+	    case 4:
+		imprime(lista);
+		break;
+	    case 5:
 		printf("Finalizando...\n");
     		libera_lista(lista);
 		return;
@@ -44,5 +64,5 @@ void main_interface(void) {
 		printf("Insira uma opcao valida!\n");
 		continue;
         }
-    } while (opcao != 2);
+    } while (opcao != 5);
 }
