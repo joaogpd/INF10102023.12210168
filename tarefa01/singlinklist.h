@@ -1,12 +1,21 @@
-#ifndef OPERACOES_H
-#define OPERACOES_H
-#include "paciente.h"
+#ifndef SINGLINKLIST_H
+#define SINGLINKLIST_H
 
-// tipo de dados paciente
-struct paciente;
-// tipo enum Priority
-enum Priority;
+// tipo enum Priority, define as prioridades de atendimento
+enum Priority {
+    VERMELHO,
+    AMARELO,
+    VERDE
+};
+// tipo estruturado paciente
+struct paciente {
+    enum Priority priority;
+    int order;
+    struct paciente* next;
+};
 
+// cria e aloca uma instancia do tipo estruturado paciente e o retorna
+struct paciente* cria_paciente(enum Priority r, int o);
 // retira um paciente da lista que desistiu (pelo numero de chegada) ou que foi transferido
 // (pela ordem de prioridade)
 struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste, int* priority);

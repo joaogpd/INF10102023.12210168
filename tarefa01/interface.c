@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "operacoes.h"
-#include "paciente.h"
+#include "singlinklist.h"
 #include "interface.h"
 
 /* Funcao de criacao de uma interface para o programa. Nao recebe parametros

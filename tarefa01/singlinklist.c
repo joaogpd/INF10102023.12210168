@@ -1,7 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "operacoes.h"
-#include "paciente.h"
+#include "singlinklist.h"
+
+// tipo enum Priority, define as prioridades de atendimento
+enum Priority;
+
+// tipo estruturado paciente
+struct paciente;
+
+/* Cria uma nova instancia de um struct paciente*, alocando a memoria necessaria. Recebe os parametros
+ * um enum Priority, que indica a prioridade do paciente,
+ * um int o, que indica a ordem de chegada do paciente.
+ * Retorna um struct paciente*, um no de lista encadeada
+ * O valor de novo->next e NULL por default, e pode ser alterado na implementacao
+ */
+struct paciente* cria_paciente(enum Priority r, int o) {
+    struct paciente* novo = (struct paciente*)malloc(sizeof(struct paciente));
+    if (novo == NULL) return NULL;
+    novo->priority = r;
+    novo->order = o;
+    novo->next = NULL;
+    return novo;
+}
 
 /* Funcao de remocao de no de lista encadadeada. Recebe como parametros:
  * um struct paciente*, a lista que vai ser manipulada,
@@ -51,7 +71,7 @@ struct paciente* chegada(struct paciente* l, enum Priority r, int o) {
     struct paciente* novo = cria_paciente(r, o);
     if (novo == NULL) {
         fprintf(stderr, "Erro ao alocar memoria");
-	return NULL;
+	exit(1);
     }
     // lista vazia
     if (l == NULL) {

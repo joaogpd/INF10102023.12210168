@@ -1,16 +1,13 @@
-main: operacoes.o interface.o paciente.o main.o
-	gcc -o main operacoes.o interface.o paciente.o main.o
-	rm operacoes.o interface.o paciente.o main.o
+main: singlinklist.o interface.o main.o
+	gcc -o main singlinklist.o interface.o main.o
+	rm singlinklist.o interface.o main.o
 
-operacoes.o: operacoes.c
-	gcc -c operacoes.o operacoes.c
+singlinklist.o: singlinklist.c
+	gcc -c singlinklist.o singlinklist.c
    
 interface.o: interface.c
 	gcc -c interface.o interface.c
 
-paciente.o: paciente.c
-	gcc -c paciente.o paciente.c
-    
 main.o: main.c
 	gcc -c main.o main.c
 
