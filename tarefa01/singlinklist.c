@@ -50,6 +50,9 @@ struct paciente* desiste_ou_transfere(struct paciente* l, int input, int desiste
     h->next = p->next;
     *priority = p->priority;
     free(p);
+    
+    imprime(l);
+    
     return l;
 }
 
@@ -99,6 +102,7 @@ struct paciente* chegada(struct paciente* l, enum Priority r, int o) {
  * Tem tipo de retorno void
  */
 void imprime(struct paciente* l) {
+    printf("Lista atualizada:\n");
     struct paciente* p = l;
     while (p != NULL) {
         printf("Num: %d ", p->order);

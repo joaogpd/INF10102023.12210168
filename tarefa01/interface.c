@@ -10,7 +10,7 @@ void main_interface(void) {
 
     // variavel para segurar a opcao de prosseguimento da interface, contador
     // de ordem de chegada, e array de contador de cada prioridade
-    int priority_temp;
+    int priority_temp = -1;
     int* priority_ptr = &priority_temp;
     int opcao = -1, i = 1, ordem = 0;
     int counters[3];
@@ -18,7 +18,7 @@ void main_interface(void) {
     do {
         printf("Numero de pacientes, vermelha: %d; amarela: %d; verde: %d\n", counters[0], counters[1], counters[2]);
         // variaveis para segurar os valores de input do usuario
-        int priority = 0, ordem = 0;
+        int priority = -1, ordem = 0;
 	printf("Insira sua opcao (0: inserir paciente, 1: atender paciente, 2: paciente transferido, 3: paciente desistiu, 4: imprimir lista, 5: finalizar): ");
         scanf("%d", &opcao);
         switch(opcao) {
@@ -43,14 +43,14 @@ void main_interface(void) {
 		    scanf("%d", &priority);
 		} while (priority < 0 || priority > 2);
 		lista = desiste_ou_transfere(lista, priority, 0, priority_ptr);
-	        if (counters[priority_temp] != 0)
+	        if (counters[priority_temp] != 0 && priority_temp >= 0)
 	            counters[priority_temp] -= 1;
 		break;
 	    case 3:
 	        printf("Insira a ordem de chegada do paciente: ");
 	        scanf("%d", &ordem);
 	        lista = desiste_ou_transfere(lista, ordem, 1, priority_ptr);
-	        if (counters[priority_temp] != 0)
+	        if (counters[priority_temp] != 0 && priority_temp >= 0)
 	            counters[priority_temp] -= 1;
 		break;
 	    case 4:
