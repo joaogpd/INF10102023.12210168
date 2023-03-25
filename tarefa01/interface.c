@@ -17,7 +17,8 @@ void main_interface(void) {
 
     do {
         printf("Numero de pacientes, vermelha: %d; amarela: %d; verde: %d\n", counters[0], counters[1], counters[2]);
-        int priority = 0;
+        // variaveis para segurar os valores de input do usuario
+        int priority = 0, ordem = 0;
 	printf("Insira sua opcao (0: inserir paciente, 1: atender paciente, 2: paciente transferido, 3: paciente desistiu, 4: imprimir lista, 5: finalizar): ");
         scanf("%d", &opcao);
         switch(opcao) {
@@ -34,7 +35,7 @@ void main_interface(void) {
             case 1:
 		if (lista != NULL)
 		    counters[lista->priority] -= 1;
-		lista = atende(lista);
+		lista = atende(lista, 1);
                 break;
 	    case 2:
 		do {

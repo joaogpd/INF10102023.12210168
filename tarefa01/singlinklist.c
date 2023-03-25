@@ -123,7 +123,7 @@ void imprime(struct paciente* l) {
  * um struct paciente* l, a lista a ser manipulada
  * Retorna a lista atualizada, um struct paciente*
  */
-struct paciente* atende(struct paciente* l) {
+struct paciente* atende(struct paciente* l, int imprimir) {
     if (l == NULL) {
 	printf("Lista vazia.\n");
         return l; 
@@ -132,7 +132,8 @@ struct paciente* atende(struct paciente* l) {
     struct paciente* p = h->next;
     free(h);
     l = p;
-    imprime(l);
+    if (imprimir)
+        imprime(l);
     return l;
 }
 
@@ -143,7 +144,8 @@ struct paciente* atende(struct paciente* l) {
 void libera_lista(struct paciente* l) {
     struct paciente* p = l;
     while (p != NULL)
-        p = atende(p);		
+        p = atende(p, 0);
+    printf("Memoria liberada\n");		
 }
 
 
